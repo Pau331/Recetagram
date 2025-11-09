@@ -16,74 +16,155 @@
     </div>
 
     <nav class="nav-links">
-      <a href="#"><i class="fa-solid fa-house"></i> <span>Inicio</span></a>
+      <a href="inicio.html"><i class="fa-solid fa-house"></i> <span>Inicio</span></a>
+
       <div class="notification-wrapper-sidebar" id="notif-wrapper">
           <i class="fa-solid fa-bell" id="notif-icon-sidebar"></i>
           <span>Notificaciones</span>
           <span class="notif-badge" id="notif-badge">3</span>
       </div>
-      <a href="#"><i class="fa-solid fa-book"></i> <span>Mis recetas</span></a>
-      <a href="#"><i class="fa-solid fa-circle-plus"></i> <span>Crear receta</span></a>
-      <a href="#"><i class="fa-solid fa-user-group"></i> <span>Amigos</span></a>
+
+      <a href="crear-receta.html"><i class="fa-solid fa-circle-plus"></i> <span>Crear receta</span></a>
+      <a href="amigos.html"><i class="fa-solid fa-user-group"></i> <span>Amigos</span></a>
     </nav>
-
-    <!-- El dropdown SEPARADO fuera del menú lateral -->
-    <div class="notifications-dropdown-overlay" id="notif-dropdown-sidebar">
-        <p><b>chef_luisa</b> le dio like a tu publicación</p>
-        <p><b>recetas_ana</b> te envió una solicitud de amistad</p>
-        <p><b>chef_luisa</b> le dio like a tu publicación</p>
+    <div class="logout-wrapper">
+        <a href="index.html" id="index-link">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Cerrar sesión</span>
+        </a>
     </div>
-
   </aside>
 
-    <!-- Barra superior de búsqueda -->
-    <div class="topbar">
+  <!-- Dropdown de notificaciones (overlay sobre feed) -->
+  <div class="notifications-dropdown-overlay" id="notif-dropdown-sidebar">
+    <div class="notif-item">
+        <img src="https://i.pravatar.cc/40?img=10" alt="chef_luisa" class="notif-avatar">
+        <p><b>chef_luisa</b> le dio like a tu publicación</p>
+    </div>
+    <div class="notif-item">
+        <img src="https://i.pravatar.cc/40?img=25" alt="recetas_ana" class="notif-avatar">
+        <p><b>recetas_ana</b> te envió una solicitud de amistad</p>
+    </div>
+    <div class="notif-item">
+        <img src="https://i.pravatar.cc/40?img=10" alt="chef_luisa" class="notif-avatar">
+        <p><b>chef_luisa</b> le dio like a tu publicación</p>
+    </div>
+  </div>
+
+
+  <!-- Barra superior de búsqueda -->
+  <div class="topbar">
+    <div class="search-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
         <input type="text" placeholder="Buscar recetas o usuarios..." class="search-bar">
     </div>
+</div>
 
-    <!-- Iconos en la esquina superior derecha -->
-    <div class="top-right-icons">
-        <a href="#" class="icon"><i class="fa-solid fa-envelope"></i></a>
-        <a href="#" class="icon"><i class="fa-solid fa-user"></i></a>
-    </div>
+  <!-- Iconos en la esquina superior derecha -->
+  <div class="top-right-icons">
+      <a href="chat.html" class="icon"><i class="fa-solid fa-envelope"></i></a>
+      <a href="perfil.html" class="icon"><i class="fa-solid fa-user"></i></a>
+  </div>
 
   <!-- Feed principal -->
   <main class="feed">
-    <div class="post">
-      <div class="post-header">
-        <img src="https://i.pravatar.cc/40?img=10" alt="usuario" class="avatar">
-        <span class="username">chef_luisa</span>
-      </div>
-      <img src="https://picsum.photos/600/600?random=1" alt="Receta 1" class="post-img">
-      <div class="post-actions">
-        <i class="fa-regular fa-heart"></i>
-        <i class="fa-regular fa-comment"></i>
-        <i class="fa-regular fa-paper-plane"></i>
-      </div>
-      <div class="post-info">
-        <span class="likes">💖 120 me gusta</span>
-        <p><b>chef_luisa</b> Pasta cremosa con ajo y parmesano 🍝✨</p>
-      </div>
-    </div>
 
-    <div class="post">
-      <div class="post-header">
-        <img src="https://i.pravatar.cc/40?img=25" alt="usuario" class="avatar">
-        <span class="username">recetas_ana</span>
-      </div>
-      <img src="https://picsum.photos/600/600?random=2" alt="Receta 2" class="post-img">
-      <div class="post-actions">
-        <i class="fa-regular fa-heart"></i>
-        <i class="fa-regular fa-comment"></i>
-        <i class="fa-regular fa-paper-plane"></i>
-      </div>
-      <div class="post-info">
-        <span class="likes">💖 85 me gusta</span>
-        <p><b>recetas_ana</b> Brownies de chocolate sin horno 🍫🔥</p>
+    <!-- Receta 1 -->
+    <a href="ver-receta.html" class="recipe-link">
+    <div class="recipe-card">
+      <img src="img/pasta_ajo.jpg" alt="Receta" class="recipe-img">
+
+      <div class="recipe-info">
+        <h2 class="recipe-title">Pasta Cremosa con Ajo</h2>
+
+        <div class="recipe-user">
+          <img src="https://i.pravatar.cc/40?img=10" alt="Usuario" class="avatar">
+          <span class="username">chef_luisa</span>
+        </div>
+
+        <div class="recipe-details">
+          <div class="detail">
+            <i class="fa-solid fa-star"></i>
+            <span>Dificultad: Media</span>
+          </div>
+          <div class="detail">
+            <i class="fa-solid fa-clock"></i>
+            <span>Tiempo: 30 min</span>
+          </div>
+          <div class="detail">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Vegetariano</span>
+          </div>
+        </div>
       </div>
     </div>
+    </a>
+    <!-- Receta 2 -->
+    <a href="ver-receta.html" class="recipe-link">
+    <div class="recipe-card">
+      <img src="img/brownie.jpg" alt="Receta" class="recipe-img">
+
+      <div class="recipe-info">
+        <h2 class="recipe-title">Brownies de Chocolate</h2>
+
+        <div class="recipe-user">
+          <img src="https://i.pravatar.cc/40?img=25" alt="Usuario" class="avatar">
+          <span class="username">recetas_ana</span>
+        </div>
+
+        <div class="recipe-details">
+          <div class="detail">
+            <i class="fa-solid fa-star"></i>
+            <span>Dificultad: Baja</span>
+          </div>
+          <div class="detail">
+            <i class="fa-solid fa-clock"></i>
+            <span>Tiempo: 20 min</span>
+          </div>
+          <div class="detail">
+            <img src="img/sin-gluten.png" alt="Sin gluten" class="diet-icon">
+            <span>Sin gluten</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </a>
+    <!-- Receta 3 -->
+    <a href="ver-receta.html" class="recipe-link">
+    <div class="recipe-card">
+      <img src="img/ensalada_quinoa.jpg" alt="Receta" class="recipe-img">
+
+      <div class="recipe-info">
+        <h2 class="recipe-title">Ensalada de Quinoa y Aguacate</h2>
+
+        <div class="recipe-user">
+          <img src="https://i.pravatar.cc/40?img=30" alt="Usuario" class="avatar">
+          <span class="username">healthychef</span>
+        </div>
+
+        <div class="recipe-details">
+          <div class="detail">
+            <i class="fa-solid fa-star"></i>
+            <span>Dificultad: Baja</span>
+          </div>
+          <div class="detail">
+            <i class="fa-solid fa-clock"></i>
+            <span>Tiempo: 15 min</span>
+          </div>
+          <div class="detail">
+            <i class="fa-solid fa-apple-whole"></i>
+            <span>Healthy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </a>
+
+
+
   </main>
 
-<script src="inicio.js"></script>
+  <!-- Script -->
+  <script src="inicio.js"></script>
 </body>
 </html>
