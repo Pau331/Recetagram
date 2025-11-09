@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat - Aprende a Cocinar</title>
+  <link rel="stylesheet" href="../css/chat.css">
+</head>
+<body>
+  <div class="chat-container">
+    <!-- Panel izquierdo -->
+    <aside class="panel-izquierdo" id="panelIzquierdo">
+      <h2>📬 Chats</h2>
+
+      <div class="seccion">
+        <h3>Sin leer</h3>
+        <div class="chat-item no-leido" data-usuario="Lucía">
+          <p class="nombre">Lucía</p>
+          <p class="ultimo-mensaje">¡Tienes que probar mi nueva receta!</p>
+        </div>
+        <div class="chat-item no-leido" data-usuario="Carlos">
+          <p class="nombre">Carlos</p>
+          <p class="ultimo-mensaje">¿Cómo hiciste el bizcocho?</p>
+        </div>
+      </div>
+
+      <div class="seccion">
+        <h3>Recientes</h3>
+        <div class="chat-item" data-usuario="Ana">
+          <p class="nombre">Ana</p>
+          <p class="ultimo-mensaje">Te mandé un nuevo postre 🍰</p>
+        </div>
+        <div class="chat-item" data-usuario="David">
+          <p class="nombre">David</p>
+          <p class="ultimo-mensaje">¿Cuándo subes receta nueva?</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Panel derecho -->
+    <section class="panel-derecho" id="panelDerecho">
+      <div class="chat-header">
+        <button id="btnVolver">⬅</button>
+        <h2 id="chat-usuario">Selecciona un chat</h2>
+      </div>
+
+      <div class="chat-mensajes" id="chatMensajes">
+        <p class="info">Haz clic en un chat para ver la conversación.</p>
+      </div>
+
+      <div class="chat-input">
+        <input type="text" id="mensajeInput" placeholder="Escribe un mensaje..." disabled>
+        <button id="btnEnviar" disabled>Enviar</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="../js/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom right, #ff9a00, #ffcc33);
+  color: #333;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor principal dividido */
+.inicio-container {
+  display: flex;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 900px;
+  height: 80vh;
+}
+
+/* Columna de texto y botones */
+.texto {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.texto h1 {
+  color: #ff9a00;
+  margin-bottom: 10px;
+}
+
+.texto p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.botones button, .continuar button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #ff9a00;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.botones button:hover {
+  background-color: #ff7400;
+}
+
+.continuar button {
+  background-color: #ccc;
+  color: #333;
+}
+
+.continuar button:hover {
+  background-color: #bbb;
+}
+
+/* Columna con imagen */
+.imagen {
+  flex: 1;
+  overflow: hidden;
+}
+
+.imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive: en móvil la imagen se oculta */
+@media (max-width: 700px) {
+  .inicio-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .imagen {
+    display: none;
+  }
+
+  .texto {
+    padding: 25px;
+  }
+}
