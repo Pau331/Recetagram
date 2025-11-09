@@ -1,0 +1,246 @@
+/* ----- Reset básico ----- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  color: #262626;
+}
+
+/* ----- Menú lateral ----- */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  border-right: 1px solid #dbdbdb;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo-full {
+  max-width: 140px;
+  height: auto;
+}
+
+/* ----- Enlaces del menú ----- */
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-links a, .notification-wrapper-sidebar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #262626;
+  font-size: 17px;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.nav-links a:hover,
+.notification-wrapper-sidebar:hover {
+  background-color: #f2f2f2;
+}
+
+/* ----- Barra superior ----- */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 250px; /* ancho de sidebar */
+  right: 0;
+  height: 70px;
+  background-color: #fff;
+  border-bottom: 1px solid #dbdbdb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.search-bar {
+  width: 350px;
+  height: 36px;
+  padding: 0 15px;
+  border: 1px solid #dbdbdb;
+  border-radius: 10px;
+  background-color: #fafafa;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-bar:focus {
+  background-color: #fff;
+  border-color: #bdbdbd;
+}
+
+/* ----- Feed principal ----- */
+.feed {
+  margin-left: 300px; /* ancho sidebar + margen */
+  margin-top: 100px; /* espacio barra superior */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.post {
+  width: 470px;
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.username {
+  font-weight: 600;
+}
+
+.post-img {
+  width: 100%;
+  display: block;
+}
+
+.post-actions {
+  display: flex;
+  gap: 15px;
+  padding: 10px;
+  font-size: 22px;
+}
+
+.post-actions i {
+  cursor: pointer;
+}
+
+.post-info {
+  padding: 0 10px 15px;
+}
+
+.likes {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* ----- Notificaciones ----- */
+.notification-wrapper-sidebar {
+  position: relative;
+}
+
+.notifications-dropdown-overlay {
+  display: none;
+  position: fixed;
+  top: 80px; /* debajo barra superior */
+  left: calc(250px + 10px); /* sidebar + margen */
+  width: 350px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  z-index: 1000;
+  padding: 10px;
+}
+
+.notifications-dropdown-overlay p {
+  margin: 8px 0;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 6px;
+  cursor: default;
+}
+
+.notifications-dropdown-overlay p:hover {
+  background-color: #f2f2f2;
+}
+
+.notif-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    pointer-events: none;
+}
+
+/* ----- Iconos superiores ----- */
+.top-right-icons {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  display: flex;
+  gap: 20px;
+  z-index: 101;
+}
+
+.top-right-icons .icon {
+  font-size: 22px;
+  color: #262626;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.top-right-icons .icon:hover {
+  color: #0095f6;
+}
+
+/* ----- Responsive básico ----- */
+@media (max-width: 1000px) {
+  .feed {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 70px;
+  }
+  .nav-links a span,
+  .notification-wrapper-sidebar span {
+    display: none;
+  }
+  .feed {
+    margin-left: 90px;
+  }
+  .top-right-icons {
+    display: none;
+  }
+}
