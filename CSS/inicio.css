@@ -77,82 +77,127 @@ body {
   justify-content: center;
   z-index: 100;
 }
+/* Contenedor relativo para la lupa */
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
+/* Icono de lupa */
+.search-icon {
+    position: absolute;
+    left: 12px;          /* separación del borde izquierdo */
+    font-size: 16px;
+    color: #8e8e8e;
+    pointer-events: none; /* para que no interfiera con escribir */
+}
+
+/* Ajustar padding del input para que no se superponga la lupa */
 .search-bar {
-  width: 350px;
-  height: 36px;
-  padding: 0 15px;
-  border: 1px solid #dbdbdb;
-  border-radius: 10px;
-  background-color: #fafafa;
-  font-size: 15px;
-  outline: none;
-  transition: all 0.2s ease;
+    width: 350px;
+    height: 36px;
+    padding: 0 15px 0 35px; /* padding-left mayor para la lupa */
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    background-color: #fafafa;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.2s ease;
 }
 
 .search-bar:focus {
-  background-color: #fff;
-  border-color: #bdbdbd;
+    background-color: #fff;
+    border-color: #bdbdbd;
 }
+
 
 /* ----- Feed principal ----- */
 .feed {
   margin-left: 300px; /* ancho sidebar + margen */
-  margin-top: 100px; /* espacio barra superior */
+  margin-top: 120px;  /* más espacio debajo de la barra superior */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
 }
 
-.post {
-  width: 470px;
+/* ----- Tarjetas de receta ----- */
+.recipe-card {
+  display: flex;
   background-color: #fff;
   border: 1px solid #dbdbdb;
-  border-radius: 4px;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 600px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.2s;
 }
 
-.post-header {
+.recipe-card:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.recipe-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.recipe-info {
+  padding: 15px;
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
 }
 
-.avatar {
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-}
-
-.username {
+.recipe-title {
+  font-size: 20px;
+  margin-bottom: 10px;
   font-weight: 600;
 }
 
-.post-img {
-  width: 100%;
-  display: block;
-}
-
-.post-actions {
+.recipe-user {
   display: flex;
-  gap: 15px;
-  padding: 10px;
-  font-size: 22px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
-.post-actions i {
-  cursor: pointer;
+.recipe-user .avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
 }
 
-.post-info {
-  padding: 0 10px 15px;
+.recipe-details {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.recipe-link {
+  text-decoration: none; /* quitar subrayado */
+  color: inherit;        /* mantener colores de texto */
+  display: block;        /* que abarque todo el ancho */
 }
 
-.likes {
-  font-weight: bold;
-  margin-bottom: 5px;
-  display: block;
+.diet-icon {
+  width: 16px;
+  height: 16px;
+  image-rendering: auto; /* suaviza el icono */
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  gap: 5px;                /* espacio entre icono y texto */
+  font-size: 14px;
+  color: #555;
+}
+
+.detail i {
+  color: #e13b63;
 }
 
 /* ----- Notificaciones ----- */
@@ -161,19 +206,19 @@ body {
 }
 
 .notifications-dropdown-overlay {
-  display: none;
-  position: fixed;
-  top: 80px; /* debajo barra superior */
-  left: calc(250px + 10px); /* sidebar + margen */
-  width: 350px;
-  max-height: 400px;
-  overflow-y: auto;
-  background-color: white;
-  border: 1px solid #ddd;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  border-radius: 10px;
-  z-index: 1000;
-  padding: 10px;
+    display: none;
+    position: fixed;
+    top: 80px;                   /* debajo de la barra superior */
+    left: calc(250px + 10px);    /* alineado al sidebar */
+    width: 350px;
+    max-height: 400px;
+    overflow-y: auto;            /* scroll si hay muchas notificaciones */
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    z-index: 1000;
+    padding: 10px;
 }
 
 .notifications-dropdown-overlay p {
@@ -201,6 +246,56 @@ body {
     pointer-events: none;
 }
 
+/* Cada notificación con avatar */
+.notif-item {
+    display: flex;          /* fila con foto y texto */
+    align-items: center;    /* alinear verticalmente */
+    gap: 10px;              /* espacio entre foto y texto */
+    padding: 5px;           /* espacio interno */
+    border-radius: 6px;     /* esquinas redondeadas */
+    cursor: default;
+}
+
+.notif-item:hover {
+    background-color: #f2f2f2; /* efecto al pasar el mouse */
+}
+
+.notif-avatar {
+    width: 40px;            /* tamaño de la foto */
+    height: 40px;
+    border-radius: 50%;     /* foto circular */
+    object-fit: cover;      /* para que la foto no se deforme */
+}
+
+
+/* ----- Cerrar sesión ----- */
+.logout-wrapper {
+    margin-top: auto; /* empuja hacia abajo del sidebar */
+    padding: 20px 15px;
+}
+
+.logout-wrapper a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #262626;
+    font-size: 18px; /* un poco más grande */
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    font-weight: 600;
+}
+
+.logout-wrapper a i {
+    font-size: 22px; /* icono más grande que los demás */
+}
+
+.logout-wrapper a:hover {
+    background-color: #f2f2f2;
+}
+
+
 /* ----- Iconos superiores ----- */
 .top-right-icons {
   position: fixed;
@@ -219,7 +314,7 @@ body {
 }
 
 .top-right-icons .icon:hover {
-  color: #0095f6;
+  color: #e13b63;
 }
 
 /* ----- Responsive básico ----- */
@@ -242,5 +337,16 @@ body {
   }
   .top-right-icons {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .recipe-card {
+    flex-direction: column;
+    width: 90%; /* se ajusta al ancho del feed */
+  }
+  .recipe-img {
+    width: 100%;
+    height: auto;
   }
 }
