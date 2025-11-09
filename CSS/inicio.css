@@ -277,22 +277,25 @@ body {
 .logout-wrapper a {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     text-decoration: none;
-    color: #262626;
-    font-size: 18px; /* un poco más grande */
-    padding: 10px;
+    color: #fff;                 
+    background-color: #e13b63;    
+    font-size: 16px;
+    padding: 12px 18px;
     border-radius: 8px;
-    transition: background-color 0.2s;
     font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .logout-wrapper a i {
-    font-size: 22px; /* icono más grande que los demás */
+    font-size: 22px; 
 }
 
 .logout-wrapper a:hover {
-    background-color: #f2f2f2;
+    background-color: #c42f54;    
+    transform: translateY(-2px);  
 }
 
 
