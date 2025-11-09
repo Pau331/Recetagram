@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recetagram</title>
+  <link rel="stylesheet" href="inicio.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- Menú lateral -->
+  <aside class="sidebar">
+    <div class="logo">
+        <img src="img/logo_texto.png" alt="Logo Recetagram" class="logo-full">
+    </div>
+
+    <nav class="nav-links">
+      <a href="#"><i class="fa-solid fa-house"></i> <span>Inicio</span></a>
+      <div class="notification-wrapper-sidebar" id="notif-wrapper">
+          <i class="fa-solid fa-bell" id="notif-icon-sidebar"></i>
+          <span>Notificaciones</span>
+          <span class="notif-badge" id="notif-badge">3</span>
+      </div>
+      <a href="#"><i class="fa-solid fa-book"></i> <span>Mis recetas</span></a>
+      <a href="#"><i class="fa-solid fa-circle-plus"></i> <span>Crear receta</span></a>
+      <a href="#"><i class="fa-solid fa-user-group"></i> <span>Amigos</span></a>
+    </nav>
+
+    <!-- El dropdown SEPARADO fuera del menú lateral -->
+    <div class="notifications-dropdown-overlay" id="notif-dropdown-sidebar">
+        <p><b>chef_luisa</b> le dio like a tu publicación</p>
+        <p><b>recetas_ana</b> te envió una solicitud de amistad</p>
+        <p><b>chef_luisa</b> le dio like a tu publicación</p>
+    </div>
+
+  </aside>
+
+    <!-- Barra superior de búsqueda -->
+    <div class="topbar">
+        <input type="text" placeholder="Buscar recetas o usuarios..." class="search-bar">
+    </div>
+
+    <!-- Iconos en la esquina superior derecha -->
+    <div class="top-right-icons">
+        <a href="#" class="icon"><i class="fa-solid fa-envelope"></i></a>
+        <a href="#" class="icon"><i class="fa-solid fa-user"></i></a>
+    </div>
+
+  <!-- Feed principal -->
+  <main class="feed">
+    <div class="post">
+      <div class="post-header">
+        <img src="https://i.pravatar.cc/40?img=10" alt="usuario" class="avatar">
+        <span class="username">chef_luisa</span>
+      </div>
+      <img src="https://picsum.photos/600/600?random=1" alt="Receta 1" class="post-img">
+      <div class="post-actions">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-comment"></i>
+        <i class="fa-regular fa-paper-plane"></i>
+      </div>
+      <div class="post-info">
+        <span class="likes">💖 120 me gusta</span>
+        <p><b>chef_luisa</b> Pasta cremosa con ajo y parmesano 🍝✨</p>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-header">
+        <img src="https://i.pravatar.cc/40?img=25" alt="usuario" class="avatar">
+        <span class="username">recetas_ana</span>
+      </div>
+      <img src="https://picsum.photos/600/600?random=2" alt="Receta 2" class="post-img">
+      <div class="post-actions">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-comment"></i>
+        <i class="fa-regular fa-paper-plane"></i>
+      </div>
+      <div class="post-info">
+        <span class="likes">💖 85 me gusta</span>
+        <p><b>recetas_ana</b> Brownies de chocolate sin horno 🍫🔥</p>
+      </div>
+    </div>
+  </main>
+
+<script src="inicio.js"></script>
+</body>
+</html>
