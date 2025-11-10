@@ -45,7 +45,8 @@ body {
   gap: 20px;
 }
 
-.nav-links a, .notification-wrapper-sidebar {
+.nav-links a,
+.notification-wrapper-sidebar {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -55,13 +56,16 @@ body {
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
+/* HOVER en el menú lateral */
 .nav-links a:hover,
 .notification-wrapper-sidebar:hover {
   background-color: #f2f2f2;
+  color: #df3767; /* Rosa principal */
 }
+
 
 /* ----- Barra superior ----- */
 .topbar {
@@ -270,34 +274,28 @@ body {
 
 /* ----- Cerrar sesión ----- */
 .logout-wrapper {
-    margin-top: auto; /* empuja hacia abajo del sidebar */
-    padding: 20px 15px;
+  margin-top: auto;
+  padding: 25px 15px;
 }
 
 .logout-wrapper a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-decoration: none;
-    color: #fff;                 
-    background-color: #e13b63;    
-    font-size: 16px;
-    padding: 12px 18px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.logout-wrapper a i {
-    font-size: 22px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  background-color: #e13b63;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
 }
 
 .logout-wrapper a:hover {
-    background-color: #c42f54;    
-    transform: translateY(-2px);  
+  background-color: #c12c54;
 }
-
 
 /* ----- Iconos superiores ----- */
 .top-right-icons {
