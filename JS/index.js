@@ -1,12 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const btnLogin = document.getElementById("btnLogin");
   const btnRegistro = document.getElementById("btnRegistro");
-  const btnContinuar = document.getElementById("btnContinuar");
 
-  // Evento mouseover (requisito)
-  [btnLogin, btnRegistro, btnContinuar].forEach(btn => {
+  // Animación hover suave
+  [btnLogin, btnRegistro].forEach((btn) => {
     btn.addEventListener("mouseover", () => {
-      btn.style.transform = "scale(1.05)";
+      btn.style.transform = "scale(1.04)";
     });
     btn.addEventListener("mouseout", () => {
       btn.style.transform = "scale(1)";
@@ -20,10 +19,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btnRegistro.addEventListener("click", () => {
     window.location.href = "registro.html";
-  });
-
-  // Intento de continuar sin iniciar sesión
-  btnContinuar.addEventListener("click", () => {
-    alert("Debes iniciar sesión o registrarte para continuar.");
   });
 });
