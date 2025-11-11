@@ -3,57 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat - Aprende a Cocinar</title>
+  <title>Chats - Recetagram</title>
   <link rel="stylesheet" href="../css/chat.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
-  <div class="chat-container">
-    <!-- Panel izquierdo -->
-    <aside class="panel-izquierdo" id="panelIzquierdo">
-      <h2>📬 Chats</h2>
 
-      <div class="seccion">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="img/logo_texto.png" alt="Logo Recetagram" class="logo-full">
+    </div>
+
+    <nav class="nav-links">
+      <a href="inicio.html"><i class="fa-solid fa-house"></i> <span>Inicio</span></a>
+      <a href="chat.html" class="active"><i class="fa-solid fa-envelope"></i> <span>Chats</span></a>
+      <a href="crear-receta.html"><i class="fa-solid fa-circle-plus"></i> <span>Crear receta</span></a>
+      <a href="amigos.html"><i class="fa-solid fa-user-group"></i> <span>Amigos</span></a>
+    </nav>
+
+    <div class="logout-wrapper">
+      <a href="index.html">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Cerrar sesión</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Contenedor principal -->
+  <main class="chat-container">
+
+    <!-- Lista de chats -->
+    <aside class="chat-list">
+      <h2>Mensajes</h2>
+
+      <!-- Sección SIN LEER -->
+      <div class="chat-section sin-leer">
         <h3>Sin leer</h3>
-        <div class="chat-item no-leido" data-usuario="Lucía">
-          <p class="nombre">Lucía</p>
-          <p class="ultimo-mensaje">¡Tienes que probar mi nueva receta!</p>
+        <div class="chat-card unread" data-usuario="Lucía">
+          <img src="https://i.pravatar.cc/40?img=11" alt="Lucía" class="chat-avatar">
+          <div>
+            <p class="chat-name">Lucía</p>
+            <p class="chat-preview">¡Tienes que probar mi nueva receta!</p>
+          </div>
         </div>
-        <div class="chat-item no-leido" data-usuario="Carlos">
-          <p class="nombre">Carlos</p>
-          <p class="ultimo-mensaje">¿Cómo hiciste el bizcocho?</p>
+        <div class="chat-card unread" data-usuario="Carlos">
+          <img src="https://i.pravatar.cc/40?img=12" alt="Carlos" class="chat-avatar">
+          <div>
+            <p class="chat-name">Carlos</p>
+            <p class="chat-preview">¿Cómo hiciste el bizcocho?</p>
+          </div>
         </div>
       </div>
 
-      <div class="seccion">
+      <!-- Sección LEÍDOS / RECIENTES -->
+      <div class="chat-section leidos">
         <h3>Recientes</h3>
-        <div class="chat-item" data-usuario="Ana">
-          <p class="nombre">Ana</p>
-          <p class="ultimo-mensaje">Te mandé un nuevo postre 🍰</p>
+        <div class="chat-card" data-usuario="Ana">
+          <img src="https://i.pravatar.cc/40?img=13" alt="Ana" class="chat-avatar">
+          <div>
+            <p class="chat-name">Ana</p>
+            <p class="chat-preview">Te mandé un nuevo postre 🍰</p>
+          </div>
         </div>
-        <div class="chat-item" data-usuario="David">
-          <p class="nombre">David</p>
-          <p class="ultimo-mensaje">¿Cuándo subes receta nueva?</p>
+        <div class="chat-card" data-usuario="David">
+          <img src="https://i.pravatar.cc/40?img=14" alt="David" class="chat-avatar">
+          <div>
+            <p class="chat-name">David</p>
+            <p class="chat-preview">¿Cuándo subes receta nueva?</p>
+          </div>
         </div>
       </div>
     </aside>
 
-    <!-- Panel derecho -->
-    <section class="panel-derecho" id="panelDerecho">
+    <!-- Panel de conversación -->
+    <section class="chat-view">
       <div class="chat-header">
-        <button id="btnVolver">⬅</button>
+        <button id="btnVolver"><i class="fa-solid fa-arrow-left"></i></button>
         <h2 id="chat-usuario">Selecciona un chat</h2>
       </div>
 
-      <div class="chat-mensajes" id="chatMensajes">
+      <div class="chat-messages" id="chatMensajes">
         <p class="info">Haz clic en un chat para ver la conversación.</p>
       </div>
 
       <div class="chat-input">
         <input type="text" id="mensajeInput" placeholder="Escribe un mensaje..." disabled>
-        <button id="btnEnviar" disabled>Enviar</button>
+        <button id="btnEnviar" disabled><i class="fa-solid fa-paper-plane"></i></button>
       </div>
     </section>
-  </div>
+
+  </main>
 
   <script src="../js/chat.js"></script>
 </body>

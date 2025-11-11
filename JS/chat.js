@@ -1,42 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const chats = document.querySelectorAll(".chat-item");
+  const chats = document.querySelectorAll(".chat-card");
   const chatUsuario = document.getElementById("chat-usuario");
   const chatMensajes = document.getElementById("chatMensajes");
   const mensajeInput = document.getElementById("mensajeInput");
   const btnEnviar = document.getElementById("btnEnviar");
-  const panelIzquierdo = document.getElementById("panelIzquierdo");
-  const panelDerecho = document.getElementById("panelDerecho");
   const btnVolver = document.getElementById("btnVolver");
+  const chatList = document.querySelector(".chat-list");
+  const chatView = document.querySelector(".chat-view");
 
-  // 🔹 Seleccionamos las secciones por encabezado
-  const seccionSinLeer = document.querySelector(".seccion:nth-of-type(1)");
-  const seccionRecientes = document.querySelector(".seccion:nth-of-type(2)");
-
-  const listaSinLeer = seccionSinLeer.querySelectorAll(".chat-item");
-  const contenedorSinLeer = seccionSinLeer.querySelector(":scope > div:not(:has(h3))");
-  const contenedorRecientes = seccionRecientes.querySelector(":scope > div:not(:has(h3))") || seccionRecientes;
+  // Secciones
+  const seccionSinLeer = document.querySelector(".chat-section.sin-leer");
+  const seccionLeidos = document.querySelector(".chat-section.leidos");
 
   // Conversaciones simuladas
   const conversaciones = {
     "Lucía": [
       { remitente: "Lucía", texto: "¡Tienes que probar mi nueva receta!" },
-      { remitente: "Tú", texto: "Claro, mándame los ingredientes 😋" }
+      { remitente: "Tú", texto: "Claro, mándame los ingredientes" }
     ],
     "Carlos": [
       { remitente: "Carlos", texto: "¿Cómo hiciste el bizcocho?" },
       { remitente: "Tú", texto: "Te paso la receta ahora." }
     ],
     "Ana": [
-      { remitente: "Ana", texto: "Te mandé un nuevo postre 🍰" },
+      { remitente: "Ana", texto: "Te mandé un nuevo postre" },
       { remitente: "Tú", texto: "¡Gracias! Tiene una pinta increíble." }
     ],
     "David": [
       { remitente: "David", texto: "¿Cuándo subes receta nueva?" },
-      { remitente: "Tú", texto: "Esta semana 😁" }
+      { remitente: "Tú", texto: "Esta semana" }
     ]
   };
 
-  // Click en un chat
+  // Clic en un chat
   chats.forEach(chat => {
     chat.addEventListener("click", () => {
       const usuario = chat.dataset.usuario;
@@ -44,67 +40,85 @@ document.addEventListener("DOMContentLoaded", () => {
       mensajeInput.disabled = false;
       btnEnviar.disabled = false;
 
-      // Mostrar los mensajes
+      // Mostrar conversación
       chatMensajes.innerHTML = "";
-      conversaciones[usuario].forEach(msg => {
-        const burbuja = document.createElement("div");
-        burbuja.classList.add("chat-burbuja", msg.remitente === "Tú" ? "user" : "otros");
-        burbuja.textContent = msg.texto;
-        chatMensajes.appendChild(burbuja);
-      });
+      if (conversaciones[usuario]) {
+        conversaciones[usuario].forEach(msg => {
+          const burbuja = document.createElement("div");
+          burbuja.classList.add("chat-bubble", msg.remitente === "Tú" ? "user" : "other");
+          burbuja.textContent = msg.texto;
+          chatMensajes.appendChild(burbuja);
+        });
+      } else {
+        chatMensajes.innerHTML = "<p class='info'>No hay mensajes aún.</p>";
+      }
 
-      // 🔸 Mover de “sin leer” a “recientes”
-      if (chat.classList.contains("no-leido")) {
-        chat.classList.remove("no-leido");
+      chatMensajes.scrollTop = chatMensajes.scrollHeight;
 
-        // Quitar del contenedor "sin leer"
-        if (chat.parentElement === contenedorSinLeer || chat.parentElement === seccionSinLeer) {
-          chat.parentElement.removeChild(chat);
+      // Mover de sin leer a leídos
+      if (chat.classList.contains("unread")) {
+        chat.classList.remove("unread");
+
+        // Eliminar de "sin leer"
+        if (seccionSinLeer && seccionSinLeer.contains(chat)) {
+          seccionSinLeer.removeChild(chat);
         }
 
-        // Insertar al inicio de “recientes”
-        const primerChatReciente = seccionRecientes.querySelector(".chat-item");
-        if (primerChatReciente) {
-          primerChatReciente.parentElement.insertBefore(chat, primerChatReciente);
-        } else {
-          seccionRecientes.appendChild(chat);
+        // Insertar al inicio de "leídos"
+        if (seccionLeidos) {
+          const primerLeido = seccionLeidos.querySelector(".chat-card");
+          if (primerLeido) {
+            seccionLeidos.insertBefore(chat, primerLeido);
+          } else {
+            seccionLeidos.appendChild(chat);
+          }
         }
       }
 
-      // En móvil: mostrar solo el panel derecho
-      if (window.innerWidth <= 600) {
-        panelIzquierdo.style.display = "none";
-        panelDerecho.style.display = "flex";
-      }
-    });
+      // Marcar activo
+      document.querySelectorAll(".chat-card").forEach(c => c.classList.remove("active"));
+      chat.classList.add("active");
 
-    // Hover visual
-    chat.addEventListener("mouseover", () => {
-      chat.style.backgroundColor = "#fff4d4";
-    });
-    chat.addEventListener("mouseout", () => {
-      chat.style.backgroundColor = "";
+      // Modo móvil
+      if (window.innerWidth <= 800) {
+        chatList.style.display = "none";
+        chatView.style.display = "flex";
+      }
     });
   });
 
-  // Botón volver (solo móvil)
+  // Botón volver (móvil)
   btnVolver.addEventListener("click", () => {
-    if (window.innerWidth <= 600) {
-      panelDerecho.style.display = "none";
-      panelIzquierdo.style.display = "block";
+    if (window.innerWidth <= 800) {
+      chatView.style.display = "none";
+      chatList.style.display = "block";
     }
   });
 
-  // Enviar mensaje nuevo
+  // Enviar mensaje
   btnEnviar.addEventListener("click", () => {
     const texto = mensajeInput.value.trim();
     if (!texto) return;
 
     const nuevaBurbuja = document.createElement("div");
-    nuevaBurbuja.classList.add("chat-burbuja", "user");
+    nuevaBurbuja.classList.add("chat-bubble", "user");
     nuevaBurbuja.textContent = texto;
     chatMensajes.appendChild(nuevaBurbuja);
+
+    const usuarioActual = chatUsuario.textContent;
+    if (usuarioActual && conversaciones[usuarioActual]) {
+      conversaciones[usuarioActual].push({ remitente: "Tú", texto });
+    }
+
     mensajeInput.value = "";
     chatMensajes.scrollTop = chatMensajes.scrollHeight;
+  });
+
+  // Enter para enviar
+  mensajeInput.addEventListener("keypress", e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      btnEnviar.click();
+    }
   });
 });
