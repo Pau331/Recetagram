@@ -12,7 +12,7 @@ body {
   display: flex;
 }
 
-/* ----- Sidebar (idéntico al de inicio) ----- */
+/* ----- Sidebar ----- */
 .sidebar {
   width: 250px;
   height: 100vh;
@@ -37,6 +37,7 @@ body {
   height: auto;
 }
 
+/* Navegación lateral */
 .nav-links {
   display: flex;
   flex-direction: column;
@@ -61,6 +62,7 @@ body {
   color: #e13b63;
 }
 
+/* Logout */
 .logout-wrapper {
   margin-top: auto;
   padding: 25px 15px;
@@ -243,6 +245,37 @@ body {
 
 .chat-input button:hover {
   background-color: #c12c54;
+}
+
+/* --- Placeholder cuando no hay chat seleccionado --- */
+.chat-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  opacity: 0.15;
+}
+
+.chat-logo-placeholder {
+  max-width: 250px;
+  width: 40%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Ocultar elementos cuando no hay chat seleccionado */
+.oculto {
+  display: none !important;
+}
+
+.chat-usuario-texto {
+  cursor: pointer;
+}
+
+.chat-usuario-texto:hover {
+  text-decoration: underline;
+  color: #e13b63;
 }
 
 /* ----- Responsive ----- */

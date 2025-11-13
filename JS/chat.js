@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnEnviar = document.getElementById("btnEnviar");
   const btnVolver = document.getElementById("btnVolver");
   const chatList = document.querySelector(".chat-list");
-  const chatView = document.querySelector(".chat-view");
+  const chatView = document.querySelector("#chatView");
+  const chatInput = document.getElementById("chatInput");
 
   // Secciones
   const seccionSinLeer = document.querySelector(".chat-section.sin-leer");
@@ -37,11 +38,17 @@ document.addEventListener("DOMContentLoaded", () => {
     chat.addEventListener("click", () => {
       const usuario = chat.dataset.usuario;
       chatUsuario.textContent = usuario;
+
+      // Mostrar input y habilitar escritura
+      chatInput.classList.remove("oculto");
       mensajeInput.disabled = false;
       btnEnviar.disabled = false;
+      chatView.dataset.activo = "true";
 
       // Mostrar conversación
       chatMensajes.innerHTML = "";
+      chatMensajes.style.background = "#fafafa";
+
       if (conversaciones[usuario]) {
         conversaciones[usuario].forEach(msg => {
           const burbuja = document.createElement("div");
@@ -55,23 +62,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       chatMensajes.scrollTop = chatMensajes.scrollHeight;
 
-      // Mover de sin leer a leídos
+      // Mover chat de "sin leer" a "leídos"
       if (chat.classList.contains("unread")) {
         chat.classList.remove("unread");
-
-        // Eliminar de "sin leer"
-        if (seccionSinLeer && seccionSinLeer.contains(chat)) {
-          seccionSinLeer.removeChild(chat);
-        }
-
-        // Insertar al inicio de "leídos"
+        if (seccionSinLeer && seccionSinLeer.contains(chat)) seccionSinLeer.removeChild(chat);
         if (seccionLeidos) {
           const primerLeido = seccionLeidos.querySelector(".chat-card");
-          if (primerLeido) {
-            seccionLeidos.insertBefore(chat, primerLeido);
-          } else {
-            seccionLeidos.appendChild(chat);
-          }
+          primerLeido ? seccionLeidos.insertBefore(chat, primerLeido) : seccionLeidos.appendChild(chat);
         }
       }
 
@@ -114,11 +111,18 @@ document.addEventListener("DOMContentLoaded", () => {
     chatMensajes.scrollTop = chatMensajes.scrollHeight;
   });
 
-  // Enter para enviar
+  // Enviar con Enter
   mensajeInput.addEventListener("keypress", e => {
     if (e.key === "Enter") {
       e.preventDefault();
       btnEnviar.click();
+    }
+  });
+
+  // Redirigir al perfil del usuario al hacer clic en su nombre
+  chatUsuario.addEventListener("click", () => {
+    if (chatView.dataset.activo === "true") {
+      window.location.href = "usuario.html";
     }
   });
 });

@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #fafafa; /* mismo fondo que en inicio */
+  background-color: #fafafa;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,7 +77,7 @@ input:focus {
 button {
   margin-top: 25px;
   padding: 12px;
-  background-color: #e13b63; /* rosa principal */
+  background-color: #e13b63;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -88,7 +88,7 @@ button {
 }
 
 button:hover {
-  background-color: #c12c54; /* más oscuro al hover */
+  background-color: #c12c54;
 }
 
 button:active {
@@ -112,7 +112,6 @@ button:active {
   text-decoration: underline;
 }
 
-/* --- Mensajes de error o éxito (opcional) --- */
 .form-message {
   margin-top: 10px;
   font-size: 13px;
@@ -130,3 +129,23 @@ button:active {
     font-size: 1.5rem;
   }
 }
+
+/* --- Ajustes para el modo recuperación --- */
+.oculto {
+  display: none !important;
+}
+
+.small-text {
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.small-text a {
+  color: #e13b63;
+  text-decoration: none;
+}
+
+.small-text a:hover {
+  text-decoration: underline;
+}
+
